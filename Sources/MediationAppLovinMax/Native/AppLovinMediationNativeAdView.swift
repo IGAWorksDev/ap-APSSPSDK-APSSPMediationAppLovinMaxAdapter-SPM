@@ -31,7 +31,7 @@ final class AppLovinMediationNativeAdView: UIView {
     
     private let placementId: String
     private let price: String
-    private let rootViewController: UIViewController?
+    private weak var rootViewController: UIViewController?
     
     private let priceParam = "jC7Fp"
     private let disableAutoRetriesParam = "disable_auto_retries"
@@ -77,6 +77,7 @@ final class AppLovinMediationNativeAdView: UIView {
         nativeAdLoader?.setExtraParameterForKey(disableAutoRetriesParam, value: "true")
         nativeAdLoader?.setExtraParameterForKey(priceParam, value: price)
         APLogger.debug("Start AppLovin Native load, UnitID: \(placementId)")
+        AppLovinMaxUID2.applyToken()
         nativeAdLoader?.loadAd(into: adView)
     }
     

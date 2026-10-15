@@ -13,11 +13,11 @@ import AppLovinSDK
 
 final class AppLovinMaxMediationRewardVideoAd: NSObject {
     
-    var delegate: APSSPRewardVideoAdapterDelegate?
+    weak var delegate: APSSPRewardVideoAdapterDelegate?
     
     private let placementId: String
     private let price: String
-    private let rootViewController: UIViewController?
+    private weak var rootViewController: UIViewController?
     
     private var rewardvideoAd: MARewardedAd?
     
@@ -50,6 +50,7 @@ final class AppLovinMaxMediationRewardVideoAd: NSObject {
         rewardvideoAd?.delegate = self
         rewardvideoAd?.setExtraParameterForKey(disableAutoRetriesParam, value: "true")
         rewardvideoAd?.setExtraParameterForKey(priceParam, value: price)
+        AppLovinMaxUID2.applyToken()
         rewardvideoAd?.load()
     }
         
@@ -80,7 +81,7 @@ extension AppLovinMaxMediationRewardVideoAd: MARewardedAdDelegate {
     
     func didFail(toDisplay ad: MAAd, withError error: MAError) {
         APLogger.error("AppLovinMax RewardVideoAd Error: \(error.description)")
-        delegate?.rewardVideoLoadFail(error: .nextMediation, errorMessage: error.description)
+        delegate?.rewardVideoShowFail(message: error.description)
     }
 
     func didHide(_ ad: MAAd) {

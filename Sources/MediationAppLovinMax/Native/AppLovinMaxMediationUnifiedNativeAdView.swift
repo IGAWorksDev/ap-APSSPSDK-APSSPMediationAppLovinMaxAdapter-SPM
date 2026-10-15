@@ -164,6 +164,7 @@ private extension AppLovinMaxMediationUnifiedNativeAdView {
         nativeAdLoader?.setExtraParameterForKey(disableAutoRetriesParam, value: "true")
         nativeAdLoader?.setExtraParameterForKey(priceParam, value: price)
         APLogger.debug("Start AppLovinMax UnifiedNative load, UnitID: \(placementId)")
+        AppLovinMaxUID2.applyToken()
         nativeAdLoader?.loadAd(into: adView)
     }
 
@@ -243,6 +244,7 @@ private extension AppLovinMaxMediationUnifiedNativeAdView {
         nativeAdLoader?.setExtraParameterForKey(disableAutoRetriesParam, value: "true")
         nativeAdLoader?.setExtraParameterForKey(priceParam, value: price)
         APLogger.debug("Start AppLovinMax UnifiedNative load, UnitID: \(placementId)")
+        AppLovinMaxUID2.applyToken()
         nativeAdLoader?.loadAd(into: maNativeAdView)
     }
 

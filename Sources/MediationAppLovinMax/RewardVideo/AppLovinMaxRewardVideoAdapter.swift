@@ -11,12 +11,16 @@ import APSSPSDK
 
 
 final public class AppLovinMaxRewardVideoAdapter: APSSPRewardVideoAdapterProtocol {
-    public var rootViewController: UIViewController?
+    public weak var rootViewController: UIViewController?
 
     private var rewardVideoAd: AppLovinMaxMediationRewardVideoAd?
     
-    public var delegate: APSSPRewardVideoAdapterDelegate?
+    public weak var delegate: APSSPRewardVideoAdapterDelegate?
     
+    deinit {
+        APLogger.debug("AppLovinMaxRewardVideoAdapter deinit")
+    }
+
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String : Any?]) {
         let placementId = placementDic[APSSPPlacementKey.appLovinMaxUnitId.rawValue] ?? ""
         let price = placementDic[APSSPPlacementKey.price.rawValue] ?? ""

@@ -66,6 +66,7 @@ final class AppLovinMaxMediationBannerView: UIView {
         setupLayout()
         bannerView.setExtraParameterForKey(disableAutoRetriesParam, value: "true")
         bannerView.setExtraParameterForKey(priceParam, value: price)
+        AppLovinMaxUID2.applyToken()
         bannerView.loadAd()
     }
     

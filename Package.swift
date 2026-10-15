@@ -11,8 +11,8 @@ let package = Package(
         .library(name: "APSSPMediationAppLovinMax", targets: ["APSSPMediationAppLovinMax"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/IGAWorksDev/ap-APSSPSDK-SPM.git", from: "3.4.0"),
-        .package(url: "https://github.com/AppLovin/AppLovin-MAX-Swift-Package.git", exact: "13.6.4"),
+        .package(url: "https://github.com/IGAWorksDev/ap-APSSPSDK-SPM.git", from: "3.4.4"),
+        .package(url: "https://github.com/AppLovin/AppLovin-MAX-Swift-Package.git", exact: "13.4.0"),
     ],
     targets: [
         .target(name: "APSSPMediationAppLovinMax",

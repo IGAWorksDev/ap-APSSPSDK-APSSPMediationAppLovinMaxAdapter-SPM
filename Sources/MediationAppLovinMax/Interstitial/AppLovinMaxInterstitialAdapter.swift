@@ -12,13 +12,17 @@ import APSSPSDK
 
 final public class AppLovinMaxInterstitialAdapter: APSSPInterstitialAdapterProtocol {
 
-    public var rootViewController: UIViewController?
+    public weak var rootViewController: UIViewController?
     
-    public var delegate: APSSPInterstitialAdapterDelegate?
+    public weak var delegate: APSSPInterstitialAdapterDelegate?
     
     private var interstitialAd: AppLovinMaxMediationInterstitialAd?
 
     
+    deinit {
+        APLogger.debug("AppLovinMaxInterstitialAdapter deinit")
+    }
+
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String : Any?]) {
         let placementId = placementDic[APSSPPlacementKey.appLovinMaxUnitId.rawValue] ?? ""
         let price = placementDic[APSSPPlacementKey.price.rawValue] ?? ""

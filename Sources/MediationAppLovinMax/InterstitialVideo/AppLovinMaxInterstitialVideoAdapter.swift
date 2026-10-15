@@ -14,10 +14,14 @@ final public class AppLovinMaxInterstitialVideoAdapter: APSSPInterstitialVideoAd
    
     private var interstitialVideoAd: AppLovinMaxMediationInterstitialVideoAd?
     
-    public var delegate: APSSPInterstitialVideoAdapterDelegate?
+    public weak var delegate: APSSPInterstitialVideoAdapterDelegate?
     
-    public var rootViewController: UIViewController?
+    public weak var rootViewController: UIViewController?
     
+    deinit {
+        APLogger.debug("AppLovinMaxInterstitialVideoAdapter deinit")
+    }
+
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String : Any?]) {
         let placementId = placementDic[APSSPPlacementKey.appLovinMaxUnitId.rawValue] ?? ""
         let price = placementDic[APSSPPlacementKey.price.rawValue] ?? ""

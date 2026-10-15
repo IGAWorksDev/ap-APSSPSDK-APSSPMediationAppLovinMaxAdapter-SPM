@@ -13,7 +13,7 @@ import AppLovinSDK
 
 final class AppLovinMaxMediationInterstitialVideoAd: NSObject {
     
-    var delegate: APSSPInterstitialVideoAdapterDelegate?
+    weak var delegate: APSSPInterstitialVideoAdapterDelegate?
     
     private let placementId: String
     private let price: String
@@ -46,6 +46,7 @@ final class AppLovinMaxMediationInterstitialVideoAd: NSObject {
         interstitialVideoAd?.delegate = self
         interstitialVideoAd?.setExtraParameterForKey(disableAutoRetriesParam, value: "true")
         interstitialVideoAd?.setExtraParameterForKey(priceParam, value: price)
+        AppLovinMaxUID2.applyToken()
         interstitialVideoAd?.load()
     }
 }
@@ -71,7 +72,7 @@ extension AppLovinMaxMediationInterstitialVideoAd : MAAdDelegate {
     
     func didFail(toDisplay ad: MAAd, withError error: MAError) {
         APLogger.error("AppLovinMax interstitialVideoAd Error: \(error.description)")
-        delegate?.interstitialVideoLoadFail(error: .nextMediation, errorMessage: error.description)
+        delegate?.interstitialVideoShowFail(message: error.description)
     }
     
     func didHide(_ ad: MAAd) {
